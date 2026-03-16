@@ -12,6 +12,9 @@ import errorHandler from "./middleware/errorHandler.js";
 import authRoutes from "./routes/authRoute.js";
 import documentRoutes from "./routes/documentRoute.js";
 import flashcardRoutes from "./routes/flashcardRoute.js";
+import aiRoutes from "./routes/aiRoute.js";
+import quizRoutes from "./routes/quizRoute.js";
+import progressRoute from "./routes/progressRoute.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,7 +39,10 @@ app.use("/uplaods", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/documents", documentRoutes);
-app.use("api/flashcards", flashcardRoutes);
+app.use("/api/flashcards", flashcardRoutes);
+app.use("/api/ai", aiRoutes);
+app.use("/api/quizzes", quizRoutes);
+app.use("/api/progress", progressRoute);
 
 app.use(errorHandler);
 
