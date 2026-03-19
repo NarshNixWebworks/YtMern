@@ -16,12 +16,13 @@ import DocumentDetailPage from "./pages/Documents/DocumentDetailPage.jsx";
 import FlashcardPage from "./pages/Flashcards/FlashcardPage.jsx";
 import FlashcardListPage from "./pages/Flashcards/FlashcardListPage.jsx";
 import QuizResultPage from "./pages/Quizzes/QuizResultPage.jsx";
+import QuizTakePage from "./pages/Quizzes/QuizTakePage.jsx";
 import ProfilePage from "./pages/Profile/ProfilePage.jsx";
 import Protectedroute from "./components/auth/Protectedroute.jsx";
+import { useAuth } from "./context/AuthContext.jsx";
 
 function App() {
-  const isAuthenticated = false;
-  const loading = false;
+  const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
     return (
@@ -48,7 +49,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<ResgisterPage />} />
 
-          <Route element={<ProtectedRoute />}>
+          <Route element={<Protectedroute />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/documents" element={<DocumentListPage />} />
             <Route path="/documents/:id" element={<DocumentDetailPage />} />
